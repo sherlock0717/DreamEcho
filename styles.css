@@ -49,6 +49,21 @@ html.gate-locked body {
   overscroll-behavior: none;
 }
 
+html.app-loading {
+  height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.app-loading body {
+  height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
 html.gate-passed {
   overflow: auto;
   min-height: 100%;
@@ -79,6 +94,81 @@ body.modal-open {
 main {
   position: relative;
   z-index: 2;
+}
+
+html.app-loading .hero,
+html.app-loading main,
+html.app-loading .footer,
+html.app-loading .music-toggle,
+html.app-loading .bgm-consent {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html.app-awaiting-choice .hero,
+html.app-awaiting-choice main,
+html.app-awaiting-choice .footer,
+html.app-awaiting-choice .music-toggle {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 18%, rgba(34, 50, 72, 0.32), transparent 64%),
+    linear-gradient(180deg, #05080d 0%, #0b1119 56%, #04070c 100%);
+  pointer-events: auto;
+  transition: opacity 0.34s ease, visibility 0.34s ease;
+}
+
+.site-loading::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 20% at 48% 58%, rgba(126, 148, 170, 0.055), transparent 74%),
+    linear-gradient(100deg, transparent 8%, rgba(130, 150, 170, 0.035) 48%, transparent 78%);
+  filter: blur(18px);
+  opacity: 0.78;
+}
+
+.site-loading__panel {
+  position: relative;
+  z-index: 1;
+  width: min(82vw, 20rem);
+  text-align: center;
+}
+
+.site-loading__label {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(220, 230, 240, 0.72);
+  letter-spacing: 0.08em;
+}
+
+.site-loading__percent {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  line-height: 1;
+  color: #edf4fa;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 22px rgba(150, 182, 210, 0.18);
+}
+
+.site-loading.site-loading--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* 极轻胶片颗粒，避免规则网格感 */
@@ -1274,6 +1364,12 @@ button.char-card:focus-visible {
 }
 
 .bgm-consent.bgm-consent--dismissed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bgm-consent.bgm-consent--pending {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
