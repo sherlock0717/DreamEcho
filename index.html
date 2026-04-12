@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="gate-locked">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="《梦土回声》夜间叙事视觉小说，雨夜、旧城东站、失物与档案之间的调查。"
+    />
+    <title>梦土回声 · 夜间叙事视觉小说</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&family=Noto+Serif:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg class="hero__svg-defs" aria-hidden="true" focusable="false">
+      <defs>
+        <filter
+          id="hero-cloud-flow"
+          x="-18%"
+          y="-18%"
+          width="136%"
+          height="136%"
+          color-interpolation-filters="sRGB"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.014 0.021"
+            numOctaves="2"
+            seed="4"
+            result="noise"
+          >
+            <animate
+              attributeName="baseFrequency"
+              dur="9s"
+              repeatCount="indefinite"
+              values="0.016 0.024; 0.026 0.034; 0.019 0.03; 0.016 0.024"
+            />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="42" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter
+          id="hero-fog-flow"
+          x="-12%"
+          y="-12%"
+          width="124%"
+          height="124%"
+          color-interpolation-filters="sRGB"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.022 0.03"
+            numOctaves="2"
+            seed="11"
+            result="fnoise"
+          >
+            <animate
+              attributeName="baseFrequency"
+              dur="10s"
+              repeatCount="indefinite"
+              values="0.026 0.038; 0.04 0.052; 0.03 0.044; 0.026 0.038"
+            />
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="fnoise" scale="30" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
+
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="hero hero--gate" id="hero-gate">
+      <div class="hero__atmos" aria-hidden="true">
+        <div class="hero__layer hero__layer--base"></div>
+        <div class="hero__layer hero__layer--sky-glow" aria-hidden="true"></div>
+        <img
+          class="hero__asset hero__asset--cloud-far hero__asset--svg-cloud"
+          src="./assets/fx/clouds/cloud_far.png"
+          alt=""
+          width="2560"
+          height="1440"
+          decoding="async"
+        />
+        <img
+          class="hero__asset hero__asset--cloud-mid hero__asset--svg-cloud"
+          src="./assets/fx/clouds/cloud_mid.png"
+          alt=""
+          width="2560"
+          height="1440"
+          decoding="async"
+        />
+        <img
+          class="hero__asset hero__asset--cloud-near hero__asset--svg-cloud"
+          src="./assets/fx/clouds/cloud_near.png"
+          alt=""
+          width="2560"
+          height="1440"
+          decoding="async"
+        />
+        <div class="hero__layer hero__layer--vignette"></div>
+        <img
+          class="hero__asset hero__asset--fog-a hero__asset--svg-fog"
+          src="./assets/fx/fog/fog_a.png"
+          alt=""
+          width="2560"
+          height="1440"
+          decoding="async"
+        />
+        <img
+          class="hero__asset hero__asset--fog-b hero__asset--svg-fog"
+          src="./assets/fx/fog/fog_b.png"
+          alt=""
+          width="2560"
+          height="1440"
+          decoding="async"
+        />
+        <img
+          class="hero__asset hero__asset--fog-c hero__asset--svg-fog"
+          src="./assets/fx/fog/fog_a.png"
+          alt=""
+          width="2560"
+          height="1440"
+          decoding="async"
+        />
+      </div>
+      <div class="hero__flash-stack" aria-hidden="true">
+        <div class="hero__flash-fill" id="hero-flash-fill"></div>
+        <div class="hero__flash-js" id="hero-flash-js"></div>
+      </div>
+      <div class="hero__inner">
+        <p class="hero__micro">雨夜 · 旧城与东站一带</p>
+        <h1 class="hero__title hero__title--logo">
+          <img
+            class="hero__logo-img"
+            src="./assets/branding/dream_echo_logo_transparent.png"
+            width="480"
+            height="160"
+            alt="梦土回声"
+            decoding="async"
+          />
+        </h1>
+        <p class="hero__subtitle">夜间叙事 · 恐怖向视觉小说（制作中）</p>
+        <p class="hero__hook">
+          旧东站失物招领橱窗里，一张便条上凭空冒出了不该存在的内容...
+        </p>
+        <p class="hero__lede">
+          调查从这一行字起步——泥泞的雨夜里，四个人被命运拽进分岔的路口。
+        </p>
+        <a class="hero__scroll" href="#overview" aria-label="向下浏览内容">
+          <svg class="hero__arrow" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 15.5 4.5 8l1.4-1.4L12 12.7l6.1-6.1L19.5 8 12 15.5z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main inert>
+      <div class="main-atmos" aria-hidden="true">
+        <div class="main-atmos__bg"></div>
+        <div class="main-atmos__mist"></div>
+        <div class="main-atmos__vignette"></div>
+      </div>
+      <section class="section section--overview" id="overview" tabindex="-1">
+        <div class="section__inner">
+          <h2 class="section__heading">这是什么</h2>
+          <p class="section__text">
+            《梦土回声》是一部以雨夜与旧城区为舞台的视觉小说，你将在雨声、末班车和旧荧光灯下面，跟随一场从「失物」与「记录」里冒出来的调查。当城市在夜里悄悄改写名字与记忆，梦境与现实的界限不断模糊之时，我们还能靠什么证明自己存在过、被承认过？
+          </p>
+          <p class="section__text section__text--muted">
+            适合喜欢慢热氛围、现场感与人物拉扯的读者；完整作品将以可游玩的章节形式公开。
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--world" id="world">
+        <div class="section__inner">
+          <h2 class="section__heading">世界观核心</h2>
+          <ul class="pill-list">
+            <li>
+              故事在旧城与东站之间展开，末班、天桥、雨中的失物招领柜台——都是你会路过、却未必多看一眼的地方。
+            </li>
+            <li>
+              夜里那些事往往先落在档案、磁带与旧医院走廊的白炽灯下，像有人把梦魇和记忆混进了纸质记录里，等你去翻页才发现对不上号。
+            </li>
+            <li>
+              那些东西不会大张旗鼓，它们更常做的，是悄无声息地打破规则和限制。
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--cast" id="cast">
+        <div class="section__inner">
+          <h2 class="section__heading">主要角色</h2>
+          <div class="card-grid">
+            <button
+              type="button"
+              class="char-card"
+              data-char-name="闻折舟"
+              data-char-key="wenzhezhou"
+              aria-haspopup="dialog"
+              aria-controls="char-dialog"
+            >
+              <span class="char-card__main">
+                <span class="char-card__text-block">
+                  <span class="char-card__name">闻折舟</span>
+                  <span class="char-card__tarot" lang="en">The Hermit</span>
+                  <span class="char-card__quote">“观察，并思考……”</span>
+                </span>
+                <span class="char-card__tarot-wrap">
+                  <img
+                    class="char-card__tarot-img char-card__tarot-img--hermit"
+                    src="./assets/tarot/hermit.jpg"
+                    alt=""
+                    width="220"
+                    height="360"
+                    loading="lazy"
+                  />
+                </span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="char-card"
+              data-char-name="白汀"
+              data-char-key="baiting"
+              aria-haspopup="dialog"
+              aria-controls="char-dialog"
+            >
+              <span class="char-card__main">
+                <span class="char-card__text-block">
+                  <span class="char-card__name">白汀</span>
+                  <span class="char-card__tarot" lang="en">The Moon</span>
+                  <span class="char-card__quote">“跟我来吧。”</span>
+                </span>
+                <span class="char-card__tarot-wrap">
+                  <img
+                    class="char-card__tarot-img char-card__tarot-img--moon"
+                    src="./assets/tarot/moon.jpg"
+                    alt=""
+                    width="220"
+                    height="360"
+                    loading="lazy"
+                  />
+                </span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="char-card"
+              data-char-name="岑灯"
+              data-char-key="cendeng"
+              aria-haspopup="dialog"
+              aria-controls="char-dialog"
+            >
+              <span class="char-card__main">
+                <span class="char-card__text-block">
+                  <span class="char-card__name">岑灯</span>
+                  <span class="char-card__tarot" lang="en">Justice</span>
+                  <span class="char-card__quote">“这不合规矩。”</span>
+                </span>
+                <span class="char-card__tarot-wrap">
+                  <img
+                    class="char-card__tarot-img char-card__tarot-img--justice"
+                    src="./assets/tarot/justice.jpg"
+                    alt=""
+                    width="220"
+                    height="360"
+                    loading="lazy"
+                  />
+                </span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="char-card"
+              data-char-name="唐未央"
+              data-char-key="tangweiyang"
+              aria-haspopup="dialog"
+              aria-controls="char-dialog"
+            >
+              <span class="char-card__main">
+                <span class="char-card__text-block">
+                  <span class="char-card__name">唐未央</span>
+                  <span class="char-card__tarot" lang="en">Judgement</span>
+                  <span class="char-card__quote">“非这样不可吗？”</span>
+                </span>
+                <span class="char-card__tarot-wrap">
+                  <img
+                    class="char-card__tarot-img char-card__tarot-img--judgement"
+                    src="./assets/tarot/judgement.jpg"
+                    alt=""
+                    width="220"
+                    height="360"
+                    loading="lazy"
+                  />
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--story" id="story">
+        <div class="section__inner">
+          <h2 class="section__heading">故事从何处开始</h2>
+          <p class="section__text">
+            一张失物招领信息上的名字，不知何时被人改过。
+          </p>
+          <p class="section__text">
+            它先出现在河汀东站，后来又被钉到旧城区便利店外的板子上。那一笔改动本来轻得像潮气留下的痕，却一路把我们引向夜航局旧楼的档案、桥上的回声、未播出的磁带和旧医院走廊。
+          </p>
+          <p class="section__text">
+            《梦土回声》的故事，就从这里开始。
+          </p>
+          <p class="section__text section__text--muted">
+            你要学着记下时间、地点、人物，以及那些本不该出现的细节；也会慢慢发现，有些东西一旦被写下、被叫出、被承认，原本分得很清楚的界限，就会开始松动。
+          </p>
+          <div class="story-actions">
+            <a class="btn btn--primary" href="#">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--status" id="status">
+        <div class="section__inner">
+          <h2 class="section__heading">当前开发状态</h2>
+          <ul class="status-list">
+            <li>
+              <span class="status-list__label">作品形态</span>
+              <span class="status-list__value">视觉小说 Demo 开发中</span>
+            </li>
+            <li>
+              <span class="status-list__label">设定与文档</span>
+              <span class="status-list__value">世界观与角色设定持续完善中</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <template id="char-tpl-wenzhezhou">
+      <p>
+        他总比别人更早看见那一个不该出现的字，或者看见一个名字被改动后留下的痕迹。很多东西在人群里还只是模糊的、含混的，到了他眼里，却已经开始显出另一层轮廓。他不急着解释，因为有些东西一旦被说得太清楚，就会比原本更快地落进现实里。
+      </p>
+    </template>
+    <template id="char-tpl-baiting">
+      <p>
+        他熟悉这座城市夜里半亮不亮的地方，仿佛那些被雨水泡软的街口、站台、桥洞和旧巷，本来就埋在他的记忆深处。很多人是跟着他，才第一次真正走进那些不该靠近的地方；很多线索也是被他一路带着，才慢慢显出形状。可有时连人也说不清，他究竟是在替你引路，还是在把你领向某种原本就一直等在那里的东西。
+      </p>
+    </template>
+    <template id="char-tpl-cendeng">
+      <p>
+        她知道哪些东西还能立刻着手处理，哪些还只能先压着，免得继续往外长。很多人把规矩当成纸上的字，她却更清楚，真正失控的从来不是纸，而是那些一旦越过界限、就再也收不回去的后果。她站在那里的时候，像是在替夜里那些尚未定型的东西，暂时划出一条还不许它们跨过去的线。
+      </p>
+    </template>
+    <template id="char-tpl-tangweiyang">
+      <p>
+        她不愿意完全站在规则那一边。比起先问该怎么处理，她更在意一个存在是怎么被叫到、怎么被记住，又是在什么时候先从称呼里被换掉的。很多东西在流程里已经快被压成可以归档、可以封存、可以处理的对象，可她总会把它们重新往“还能不能算作一个人”那边拉回一点。她开口的时候，往往像是要把某个已经快沉下去的名字，再从黑暗里叫回来。
+      </p>
+    </template>
+
+    <div
+      class="char-modal"
+      id="char-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="char-dialog-title"
+      hidden
+    >
+      <div class="char-modal__backdrop" data-close-modal tabindex="-1"></div>
+      <div class="char-modal__panel char-modal__panel--dossier" id="char-dialog">
+        <button type="button" class="char-modal__close" data-close-modal aria-label="关闭">×</button>
+        <div class="char-modal__grid">
+          <div class="char-modal__figure">
+            <!-- 9:16 立绘位：替换占位为 img.char-modal__figure-img 即可 -->
+            <p class="char-modal__figure-placeholder">立绘预留</p>
+          </div>
+          <div class="char-modal__right">
+            <h2 id="char-dialog-title" class="char-modal__title"></h2>
+            <p id="char-modal-tarot" class="char-modal__tarot" lang="en"></p>
+            <p id="char-modal-quote" class="char-modal__quote"></p>
+            <div class="char-modal__bio char-modal__prose" id="char-modal-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" id="info" inert>
+      <div class="footer__inner">
+        <p class="footer__title">梦土回声</p>
+        <p class="footer__meta">夜间叙事 · 视觉小说</p>
+        <p class="footer__meta">© 作品名保留</p>
+        <a class="footer__top" href="#overview">返回顶部</a>
+      </div>
+    </footer>
+
+    <div
+      class="bgm-consent"
+      id="bgm-consent"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bgm-consent-title"
+    >
+      <div class="bgm-consent__backdrop" aria-hidden="true"></div>
+      <div class="bgm-consent__panel">
+        <p id="bgm-consent-title" class="bgm-consent__title">本页面包含背景音乐</p>
+        <p class="bgm-consent__text">是否开启？</p>
+        <div class="bgm-consent__actions">
+          <button type="button" class="bgm-consent__btn bgm-consent__btn--primary" id="bgm-consent-accept">
+            接受
+          </button>
+          <button type="button" class="bgm-consent__btn bgm-consent__btn--ghost" id="bgm-consent-decline">
+            拒绝
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <audio id="site-bgm" class="site-bgm" preload="metadata" loop playsinline>
+      <source src="./assets/audio/bgm_main.mp3" type="audio/mpeg" />
+    </audio>
+    <button type="button" id="music-toggle" class="music-toggle" aria-label="背景音乐" title="背景音乐">🎵</button>
+
+    <script src="./main.js" defer></script>
+  </body>
+</html>

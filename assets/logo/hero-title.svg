@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" width="520" height="140" role="img" aria-label="????">
+  <defs>
+    <filter id="lg" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.2" flood-color="#c8d8e8" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <text
+    x="50%"
+    y="52%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    fill="#e8eef5"
+    font-family="Noto Serif SC, Noto Serif, Times New Roman, serif"
+    font-size="56"
+    font-weight="600"
+    letter-spacing="0.12em"
+    filter="url(#lg)"
+  >????</text>
+</svg>
