@@ -76,7 +76,7 @@
   var consentDecline = document.getElementById("bgm-consent-decline");
   var loadingEl = document.getElementById("site-loading");
   var loadingPercentEl = document.getElementById("site-loading-percent");
-  var criticalImageSrcs = [
+  var loadingImageSrcs = [
     "./assets/branding/dream_echo_logo_transparent.png",
     "./assets/fx/clouds/cloud_far.png",
     "./assets/fx/clouds/cloud_mid.png",
@@ -86,6 +86,14 @@
     "./assets/fx/fog/fog_a.png",
     "./assets/fx/fog/fog_b.png",
     "./assets/bg/city_distant_atmosphere.svg",
+    "./assets/characters/poster_tang_final_thumb.jpg",
+    "./assets/characters/poster_bai_final_thumb.jpg",
+    "./assets/characters/poster_cen_final_thumb.jpg",
+    "./assets/characters/poster_wen_final_thumb.jpg",
+    "./assets/characters/poster_tang_final_display.jpg",
+    "./assets/characters/poster_bai_final_display.jpg",
+    "./assets/characters/poster_cen_final_display.jpg",
+    "./assets/characters/poster_wen_final_display.jpg",
   ];
   var loadingDisplayed = 0;
   var loadingTarget = 0;
@@ -115,89 +123,70 @@
     return new URL(src, window.location.href).href;
   }
 
-  function withTimeout(promise, ms) {
-    var timer;
-    var timeout = new Promise(function (resolve) {
-      timer = window.setTimeout(function () {
-        resolve({ ok: false, timedOut: true });
-      }, ms);
-    });
-    return Promise.race([promise, timeout]).then(function (result) {
-      window.clearTimeout(timer);
-      return result;
-    });
-  }
-
   function preloadImage(src) {
-    return withTimeout(
-      new Promise(function (resolve) {
-        var img = new Image();
-        img.decoding = "async";
-        img.onload = function () {
-          if (img.decode) {
-            img.decode().then(function () {
-              resolve({ ok: true, src: src });
-            }).catch(function () {
-              resolve({ ok: true, src: src });
-            });
-          } else {
+    return new Promise(function (resolve) {
+      var img = new Image();
+      img.decoding = "async";
+      img.onload = function () {
+        if (img.decode) {
+          img.decode().then(function () {
             resolve({ ok: true, src: src });
-          }
-        };
-        img.onerror = function () {
-          resolve({ ok: false, src: src });
-        };
-        img.src = resolveAssetUrl(src);
-      }),
-      9000
-    );
+          }).catch(function () {
+            resolve({ ok: true, src: src });
+          });
+        } else {
+          resolve({ ok: true, src: src });
+        }
+      };
+      img.onerror = function () {
+        resolve({ ok: false, src: src });
+      };
+      img.src = resolveAssetUrl(src);
+    });
   }
 
   function preloadAudioElement(audio) {
     if (!audio) return Promise.resolve({ ok: true, src: "audio:none" });
-    if (audio.readyState >= 2) return Promise.resolve({ ok: true, src: "audio:ready" });
-    return withTimeout(
-      new Promise(function (resolve) {
-        var done = false;
-        function finish(ok) {
-          if (done) return;
-          done = true;
-          audio.removeEventListener("canplay", onReady);
-          audio.removeEventListener("loadeddata", onReady);
-          audio.removeEventListener("error", onError);
-          resolve({ ok: ok, src: "audio" });
-        }
-        function onReady() {
-          finish(true);
-        }
-        function onError() {
-          finish(false);
-        }
-        audio.addEventListener("canplay", onReady, { once: true });
-        audio.addEventListener("loadeddata", onReady, { once: true });
-        audio.addEventListener("error", onError, { once: true });
-        try {
-          audio.load();
-        } catch (err) {
-          finish(false);
-        }
-      }),
-      7000
-    );
+    audio.preload = "auto";
+    if (audio.readyState >= 3) return Promise.resolve({ ok: true, src: "audio:ready" });
+    return new Promise(function (resolve) {
+      var done = false;
+      function finish(ok) {
+        if (done) return;
+        done = true;
+        audio.removeEventListener("canplaythrough", onReady);
+        audio.removeEventListener("canplay", onReady);
+        audio.removeEventListener("loadeddata", onReady);
+        audio.removeEventListener("error", onError);
+        resolve({ ok: ok, src: "audio" });
+      }
+      function onReady() {
+        if (audio.readyState >= 2) finish(true);
+      }
+      function onError() {
+        finish(false);
+      }
+      audio.addEventListener("canplaythrough", onReady, { once: true });
+      audio.addEventListener("canplay", onReady, { once: true });
+      audio.addEventListener("loadeddata", onReady, { once: true });
+      audio.addEventListener("error", onError, { once: true });
+      try {
+        audio.load();
+      } catch (err) {
+        finish(false);
+      }
+    });
   }
 
   function preloadFonts() {
     if (!document.fonts || !document.fonts.ready) {
       return Promise.resolve({ ok: true, src: "fonts:unsupported" });
     }
-    return withTimeout(
-      document.fonts.ready.then(function () {
+    return document.fonts.ready.then(function () {
         return { ok: true, src: "fonts" };
       }).catch(function () {
         return { ok: false, src: "fonts" };
-      }),
-      5000
-    );
+      });
   }
 
   function showBgmConsentAfterLoading() {
@@ -226,7 +215,8 @@
 
   function startInitialLoading() {
     updateLoadingPercent(0);
-    var tasks = criticalImageSrcs.map(preloadImage);
+    var uniqueImages = Array.from(new Set(loadingImageSrcs));
+    var tasks = uniqueImages.map(preloadImage);
     tasks.push(preloadAudioElement(bgmAudio));
     tasks.push(preloadFonts());
     var total = tasks.length;
@@ -240,7 +230,9 @@
     });
 
     Promise.all(tasks).then(function () {
-      updateLoadingPercent(100);
+      loadingTarget = 100;
+      loadingDisplayed = 100;
+      if (loadingPercentEl) loadingPercentEl.textContent = "100%";
       window.setTimeout(showBgmConsentAfterLoading, 260);
     });
   }

@@ -211,7 +211,7 @@
               class="char-card"
               data-char-name="唐未央"
               data-char-key="tangweiyang"
-              data-char-image="./assets/characters/poster_tang_final.png"
+              data-char-image="./assets/characters/poster_tang_final_display.jpg"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
@@ -226,7 +226,8 @@
               />
               <span class="char-card__body">
                 <span class="char-card__name">唐未央</span>
-                <span class="char-card__quote">记录声音的人</span>
+                <span class="char-card__tarot" lang="en">Judgement</span>
+                <span class="char-card__quote">“非这样不可吗？”</span>
               </span>
             </button>
             <button
@@ -234,7 +235,7 @@
               class="char-card"
               data-char-name="白汀"
               data-char-key="baiting"
-              data-char-image="./assets/characters/poster_bai_final.png"
+              data-char-image="./assets/characters/poster_bai_final_display.jpg"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
@@ -249,7 +250,8 @@
               />
               <span class="char-card__body">
                 <span class="char-card__name">白汀</span>
-                <span class="char-card__quote">跑现场的人</span>
+                <span class="char-card__tarot" lang="en">The Moon</span>
+                <span class="char-card__quote">“跟我来吧。”</span>
               </span>
             </button>
             <button
@@ -257,7 +259,7 @@
               class="char-card"
               data-char-name="岑灯"
               data-char-key="cendeng"
-              data-char-image="./assets/characters/poster_cen_final.png"
+              data-char-image="./assets/characters/poster_cen_final_display.jpg"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
@@ -272,7 +274,8 @@
               />
               <span class="char-card__body">
                 <span class="char-card__name">岑灯</span>
-                <span class="char-card__quote">守流程的人</span>
+                <span class="char-card__tarot" lang="en">Justice</span>
+                <span class="char-card__quote">“这不合规矩。”</span>
               </span>
             </button>
             <button
@@ -280,7 +283,7 @@
               class="char-card"
               data-char-name="闻折舟"
               data-char-key="wenzhezhou"
-              data-char-image="./assets/characters/poster_wen_final.png"
+              data-char-image="./assets/characters/poster_wen_final_display.jpg"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
@@ -295,7 +298,8 @@
               />
               <span class="char-card__body">
                 <span class="char-card__name">闻折舟</span>
-                <span class="char-card__quote">盯异常的人</span>
+                <span class="char-card__tarot" lang="en">The Hermit</span>
+                <span class="char-card__quote">“观察，并思考……”</span>
               </span>
             </button>
           </div>
@@ -378,8 +382,8 @@
               id="char-modal-image"
               class="char-modal__figure-img"
               alt=""
-              width="1024"
-              height="1536"
+              width="900"
+              height="1350"
               loading="lazy"
               decoding="async"
             />
@@ -425,7 +429,7 @@
       </div>
     </div>
 
-    <audio id="site-bgm" class="site-bgm" preload="metadata" loop playsinline>
+    <audio id="site-bgm" class="site-bgm" preload="auto" loop playsinline>
       <source src="./assets/audio/bgm_main.mp3" type="audio/mpeg" />
     </audio>
     <button type="button" id="music-toggle" class="music-toggle" aria-label="背景音乐" title="背景音乐">🎵</button>

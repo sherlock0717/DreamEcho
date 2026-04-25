@@ -1032,8 +1032,15 @@ button.char-card:focus-visible {
   color: var(--fluoro);
 }
 
+.char-card__body .char-card__tarot {
+  margin: 0.2rem 0 0.45rem;
+  max-width: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+}
+
 .char-card__body .char-card__quote {
-  color: var(--text-muted);
+  color: #d8e1ea;
   font-size: 0.85rem;
   line-height: 1.45;
 }
