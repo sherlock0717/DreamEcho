@@ -204,32 +204,29 @@
 
       <section class="section section--cast" id="cast">
         <div class="section__inner">
-          <h2 class="section__heading">主要角色</h2>
-          <div class="card-grid">
+          <h2 class="section__heading">角色</h2>
+          <div class="character-grid">
             <button
               type="button"
               class="char-card"
-              data-char-name="闻折舟"
-              data-char-key="wenzhezhou"
+              data-char-name="唐未央"
+              data-char-key="tangweiyang"
+              data-char-image="./assets/characters/poster_tang_final.png"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
-              <span class="char-card__main">
-                <span class="char-card__text-block">
-                  <span class="char-card__name">闻折舟</span>
-                  <span class="char-card__tarot" lang="en">The Hermit</span>
-                  <span class="char-card__quote">“观察，并思考……”</span>
-                </span>
-                <span class="char-card__tarot-wrap">
-                  <img
-                    class="char-card__tarot-img char-card__tarot-img--hermit"
-                    src="./assets/tarot/hermit.jpg"
-                    alt=""
-                    width="220"
-                    height="360"
-                    loading="lazy"
-                  />
-                </span>
+              <img
+                class="char-card__portrait"
+                src="./assets/characters/poster_tang_final_thumb.jpg"
+                alt="唐未央角色设定图"
+                width="520"
+                height="780"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="char-card__body">
+                <span class="char-card__name">唐未央</span>
+                <span class="char-card__quote">记录声音的人</span>
               </span>
             </button>
             <button
@@ -237,25 +234,22 @@
               class="char-card"
               data-char-name="白汀"
               data-char-key="baiting"
+              data-char-image="./assets/characters/poster_bai_final.png"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
-              <span class="char-card__main">
-                <span class="char-card__text-block">
-                  <span class="char-card__name">白汀</span>
-                  <span class="char-card__tarot" lang="en">The Moon</span>
-                  <span class="char-card__quote">“跟我来吧。”</span>
-                </span>
-                <span class="char-card__tarot-wrap">
-                  <img
-                    class="char-card__tarot-img char-card__tarot-img--moon"
-                    src="./assets/tarot/moon.jpg"
-                    alt=""
-                    width="220"
-                    height="360"
-                    loading="lazy"
-                  />
-                </span>
+              <img
+                class="char-card__portrait"
+                src="./assets/characters/poster_bai_final_thumb.jpg"
+                alt="白汀角色设定图"
+                width="520"
+                height="780"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="char-card__body">
+                <span class="char-card__name">白汀</span>
+                <span class="char-card__quote">跑现场的人</span>
               </span>
             </button>
             <button
@@ -263,51 +257,45 @@
               class="char-card"
               data-char-name="岑灯"
               data-char-key="cendeng"
+              data-char-image="./assets/characters/poster_cen_final.png"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
-              <span class="char-card__main">
-                <span class="char-card__text-block">
-                  <span class="char-card__name">岑灯</span>
-                  <span class="char-card__tarot" lang="en">Justice</span>
-                  <span class="char-card__quote">“这不合规矩。”</span>
-                </span>
-                <span class="char-card__tarot-wrap">
-                  <img
-                    class="char-card__tarot-img char-card__tarot-img--justice"
-                    src="./assets/tarot/justice.jpg"
-                    alt=""
-                    width="220"
-                    height="360"
-                    loading="lazy"
-                  />
-                </span>
+              <img
+                class="char-card__portrait"
+                src="./assets/characters/poster_cen_final_thumb.jpg"
+                alt="岑灯角色设定图"
+                width="520"
+                height="780"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="char-card__body">
+                <span class="char-card__name">岑灯</span>
+                <span class="char-card__quote">守流程的人</span>
               </span>
             </button>
             <button
               type="button"
               class="char-card"
-              data-char-name="唐未央"
-              data-char-key="tangweiyang"
+              data-char-name="闻折舟"
+              data-char-key="wenzhezhou"
+              data-char-image="./assets/characters/poster_wen_final.png"
               aria-haspopup="dialog"
               aria-controls="char-dialog"
             >
-              <span class="char-card__main">
-                <span class="char-card__text-block">
-                  <span class="char-card__name">唐未央</span>
-                  <span class="char-card__tarot" lang="en">Judgement</span>
-                  <span class="char-card__quote">“非这样不可吗？”</span>
-                </span>
-                <span class="char-card__tarot-wrap">
-                  <img
-                    class="char-card__tarot-img char-card__tarot-img--judgement"
-                    src="./assets/tarot/judgement.jpg"
-                    alt=""
-                    width="220"
-                    height="360"
-                    loading="lazy"
-                  />
-                </span>
+              <img
+                class="char-card__portrait"
+                src="./assets/characters/poster_wen_final_thumb.jpg"
+                alt="闻折舟角色设定图"
+                width="520"
+                height="780"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="char-card__body">
+                <span class="char-card__name">闻折舟</span>
+                <span class="char-card__quote">盯异常的人</span>
               </span>
             </button>
           </div>
@@ -386,8 +374,15 @@
         <button type="button" class="char-modal__close" data-close-modal aria-label="关闭">×</button>
         <div class="char-modal__grid">
           <div class="char-modal__figure">
-            <!-- 9:16 立绘位：替换占位为 img.char-modal__figure-img 即可 -->
-            <p class="char-modal__figure-placeholder">立绘预留</p>
+            <img
+              id="char-modal-image"
+              class="char-modal__figure-img"
+              alt=""
+              width="1024"
+              height="1536"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div class="char-modal__right">
             <h2 id="char-dialog-title" class="char-modal__title"></h2>

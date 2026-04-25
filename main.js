@@ -401,20 +401,29 @@
   var titleEl = document.getElementById("char-dialog-title");
   var tarotEl = document.getElementById("char-modal-tarot");
   var quoteEl = document.getElementById("char-modal-quote");
+  var imageEl = document.getElementById("char-modal-image");
   var closeEls = modal ? modal.querySelectorAll("[data-close-modal]") : [];
 
   function openModal(key, btn) {
     var tpl = document.getElementById("char-tpl-" + key);
     if (!tpl || !bodyEl || !modal) return;
     var name = btn.getAttribute("data-char-name");
+    var image = btn.getAttribute("data-char-image");
     var tarot = btn.querySelector(".char-card__tarot");
     var quote = btn.querySelector(".char-card__quote");
 
     bodyEl.innerHTML = "";
     bodyEl.appendChild(tpl.content.cloneNode(true));
     if (titleEl) titleEl.textContent = name || "";
-    if (tarotEl) tarotEl.textContent = tarot ? tarot.textContent.trim() : "";
+    if (tarotEl) {
+      tarotEl.textContent = tarot ? tarot.textContent.trim() : "";
+      tarotEl.hidden = !tarot;
+    }
     if (quoteEl) quoteEl.textContent = quote ? quote.textContent.trim() : "";
+    if (imageEl) {
+      imageEl.src = image || "";
+      imageEl.alt = name ? name + "角色设定图" : "";
+    }
 
     modal.hidden = false;
     document.body.classList.add("modal-open");
@@ -429,6 +438,10 @@
     if (bodyEl) bodyEl.innerHTML = "";
     if (tarotEl) tarotEl.textContent = "";
     if (quoteEl) quoteEl.textContent = "";
+    if (imageEl) {
+      imageEl.removeAttribute("src");
+      imageEl.alt = "";
+    }
   }
 
   document.querySelectorAll(".char-card").forEach(function (btn) {
